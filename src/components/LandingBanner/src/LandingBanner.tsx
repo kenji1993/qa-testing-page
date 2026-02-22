@@ -1,12 +1,10 @@
 import React from 'react';
 import { Flame, Star } from 'lucide-react';
-import { useCartStore } from '../../../store/useCartStore';
+import { useCartSummary } from '../../../hooks/useCartSummary';
 import { RESTAURANT_NAME } from '../../../data/products';
 
 const LandingBanner: React.FC = () => {
-    const openDrawer = useCartStore((s) => s.openDrawer);
-    const getTotalItems = useCartStore((s) => s.getTotalItems);
-    const totalItems = getTotalItems();
+    const { totalItems, openDrawer } = useCartSummary();
 
     return (
         <section

@@ -1,12 +1,10 @@
 import React from 'react';
 import { ShoppingCart, Flame } from 'lucide-react';
-import { useCartStore } from '../../../store/useCartStore';
+import { useCartSummary } from '../../../hooks/useCartSummary';
 import { RESTAURANT_NAME } from '../../../data/products';
 
 const Header: React.FC = () => {
-    const getTotalItems = useCartStore((state) => state.getTotalItems);
-    const openDrawer = useCartStore((state) => state.openDrawer);
-    const totalItems = getTotalItems();
+    const { totalItems, openDrawer } = useCartSummary();
 
     return (
         <header className="sticky top-0 z-40 w-full border-b border-[#2e2e2e] bg-[#111111]/95 backdrop-blur-md">

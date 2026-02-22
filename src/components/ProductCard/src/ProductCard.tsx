@@ -1,26 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ShoppingCart, CheckCircle } from 'lucide-react';
 import type { Product } from '../../../types';
-
-import { useCartStore } from '../../../store/useCartStore';
+import { useAddToCart } from '../../../hooks/useAddToCart';
 
 interface ProductCardProps {
     product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-    const addItem = useCartStore((state) => state.addItem);
-    const items = useCartStore((state) => state.items);
-    const [added, setAdded] = useState(false);
-
-    const cartItem = items.find((i) => i.id === product.id);
-    const quantity = cartItem?.quantity ?? 0;
-
-    const handleAdd = () => {
-        addItem(product);
-        setAdded(true);
-        setTimeout(() => setAdded(false), 1200);
-    };
+    const { added, handleAdd, quantity } = useAddToCart(product);
 
     return (
         <article

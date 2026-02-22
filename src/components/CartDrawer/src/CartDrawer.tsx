@@ -1,52 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { X, Trash2, Plus, Minus, MessageCircle, ShoppingBag } from 'lucide-react';
-import { useCartStore } from '../../../store/useCartStore';
-import { WHATSAPP_NUMBER, RESTAURANT_NAME } from '../../../data/products';
+import { useCartDrawer } from '../../../hooks/useCartDrawer';
+import { buildWhatsAppOrder } from '../../../use-cases/buildWhatsAppOrder';
 
 const CartDrawer: React.FC = () => {
-    const items = useCartStore((state) => state.items);
-    const isDrawerOpen = useCartStore((state) => state.isDrawerOpen);
-    const closeDrawer = useCartStore((state) => state.closeDrawer);
-    const removeItem = useCartStore((state) => state.removeItem);
-    const updateQuantity = useCartStore((state) => state.updateQuantity);
-    const clearCart = useCartStore((state) => state.clearCart);
-    const getTotal = useCartStore((state) => state.getTotal);
-
-    const total = getTotal();
-
-    // Lock body scroll when drawer is open
-    useEffect(() => {
-        document.body.style.overflow = isDrawerOpen ? 'hidden' : '';
-        return () => { document.body.style.overflow = ''; };
-    }, [isDrawerOpen]);
-
-    // Close on Escape key
-    useEffect(() => {
-        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') closeDrawer(); };
-        window.addEventListener('keydown', handler);
-        return () => window.removeEventListener('keydown', handler);
-    }, [closeDrawer]);
+    const { items, isDrawerOpen, total, closeDrawer, removeItem, updateQuantity, clearCart } = useCartDrawer();
 
     const handleWhatsAppOrder = () => {
         if (items.length === 0) return;
-
-        const lines = items.map(
-            (item) =>
-                `• ${item.name} x${item.quantity} — $${(item.price * item.quantity).toLocaleString('es-AR')}`
-        );
-        const message = [
-            `¡Hola ${RESTAURANT_NAME}! 👋`,
-            `Me gustaría hacer el siguiente pedido:`,
-            ``,
-            ...lines,
-            ``,
-            `*Total: $${total.toLocaleString('es-AR')}*`,
-            ``,
-            `Muchas gracias! 🥩🔥`,
-        ].join('\n');
-
-        const encoded = encodeURIComponent(message);
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+        window.open(buildWhatsAppOrder(items, total), '_blank');
     };
 
     return (

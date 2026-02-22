@@ -1,10 +1,11 @@
 import React from 'react';
 import { PRODUCTS } from '../../../data/products';
 import ProductCard from '../../ProductCard';
+import { groupProductsByCategory } from '../../../use-cases/groupProductsByCategory';
+
+const productGroups = groupProductsByCategory(PRODUCTS);
 
 const ProductList: React.FC = () => {
-    const categories = [...new Set(PRODUCTS.map((p) => p.category))];
-
     return (
         <section
             data-testid="product-list"
@@ -22,7 +23,7 @@ const ProductList: React.FC = () => {
             </div>
 
             {/* Grouped by category */}
-            {categories.map((category) => (
+            {productGroups.map(({ category, products }) => (
                 <div key={category} className="mb-12">
                     <h3
                         data-testid={`category-heading-${category.toLowerCase()}`}
@@ -31,7 +32,7 @@ const ProductList: React.FC = () => {
                         — {category}
                     </h3>
                     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                        {PRODUCTS.filter((p) => p.category === category).map((product) => (
+                        {products.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
