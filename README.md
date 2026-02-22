@@ -4,6 +4,8 @@ Landing page de un menú digital para una parrilla argentina. El usuario navega 
 
 Diseñado también como **página de práctica para testing automatizado**, con atributos `data-testid` semánticos en todos los elementos interactivos.
 
+![Grabaciondepantalla2026-02-22alas2 46 25p m -ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/fa4c6826-f05c-4510-b10e-08728f6609df)
+
 ---
 
 ## Stack Tecnológico
