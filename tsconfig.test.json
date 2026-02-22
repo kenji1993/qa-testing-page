@@ -1,0 +1,20 @@
+{
+    "extends": "./tsconfig.app.json",
+    "compilerOptions": {
+        "composite": true,
+        "noEmit": false,
+        "moduleResolution": "node",
+        "verbatimModuleSyntax": false,
+        "allowImportingTsExtensions": false,
+        "noUncheckedSideEffectImports": false,
+        "esModuleInterop": true,
+        "types": [
+            "jest",
+            "@testing-library/jest-dom"
+        ]
+    },
+    "include": [
+        "src/**/__tests__/**",
+        "jest.setup.ts"
+    ]
+}

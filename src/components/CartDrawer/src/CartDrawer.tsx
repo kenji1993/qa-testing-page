@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, Trash2, Plus, Minus, MessageCircle, ShoppingBag } from 'lucide-react';
-import { useCartStore } from '../store/useCartStore';
-import { WHATSAPP_NUMBER, RESTAURANT_NAME } from '../data/products';
+import { useCartStore } from '../../../store/useCartStore';
+import { WHATSAPP_NUMBER, RESTAURANT_NAME } from '../../../data/products';
 
 const CartDrawer: React.FC = () => {
     const items = useCartStore((state) => state.items);

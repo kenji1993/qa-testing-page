@@ -1,6 +1,6 @@
 import React from 'react';
-import { PRODUCTS } from '../data/products';
-import ProductCard from './ProductCard';
+import { PRODUCTS } from '../../../data/products';
+import ProductCard from '../../ProductCard';
 
 const ProductList: React.FC = () => {
     const categories = [...new Set(PRODUCTS.map((p) => p.category))];

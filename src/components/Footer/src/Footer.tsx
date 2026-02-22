@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flame, MessageCircle, MapPin, Clock } from 'lucide-react';
-import { RESTAURANT_NAME, WHATSAPP_NUMBER } from '../data/products';
+import { RESTAURANT_NAME, WHATSAPP_NUMBER } from '../../../data/products';
 
 const Footer: React.FC = () => {
     return (

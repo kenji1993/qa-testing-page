@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flame, Star } from 'lucide-react';
-import { useCartStore } from '../store/useCartStore';
-import { RESTAURANT_NAME } from '../data/products';
+import { useCartStore } from '../../../store/useCartStore';
+import { RESTAURANT_NAME } from '../../../data/products';
 
 const LandingBanner: React.FC = () => {
     const openDrawer = useCartStore((s) => s.openDrawer);

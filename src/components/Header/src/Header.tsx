@@ -1,7 +1,7 @@
 import React from 'react';
 import { ShoppingCart, Flame } from 'lucide-react';
-import { useCartStore } from '../store/useCartStore';
-import { RESTAURANT_NAME } from '../data/products';
+import { useCartStore } from '../../../store/useCartStore';
+import { RESTAURANT_NAME } from '../../../data/products';
 
 const Header: React.FC = () => {
     const getTotalItems = useCartStore((state) => state.getTotalItems);

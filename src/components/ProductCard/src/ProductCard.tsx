@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ShoppingCart, CheckCircle } from 'lucide-react';
-import type { Product } from '../types';
+import type { Product } from '../../../types';
 
-import { useCartStore } from '../store/useCartStore';
+import { useCartStore } from '../../../store/useCartStore';
 
 interface ProductCardProps {
     product: Product;
