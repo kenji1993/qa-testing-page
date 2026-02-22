@@ -11,7 +11,7 @@ const Header: React.FC = () => {
             <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
                 {/* Logo */}
                 <div className="flex items-center gap-2" data-testid="header-logo">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c8102e]">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#c8102e]" aria-hidden="true">
                         <Flame className="h-5 w-5 text-white" />
                     </div>
                     <div className="flex flex-col leading-tight">
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                     aria-label={`Abrir carrito, ${totalItems} productos`}
                     className="relative flex h-11 w-11 items-center justify-center rounded-full border border-[#2e2e2e] bg-[#1e1e1e] text-white transition-all duration-200 hover:border-[#c8102e] hover:bg-[#c8102e]/10 active:scale-95"
                 >
-                    <ShoppingCart className="h-5 w-5" />
+                    <ShoppingCart className="h-5 w-5" aria-hidden="true" />
                     {totalItems > 0 && (
                         <span
                             data-testid="cart-item-count"

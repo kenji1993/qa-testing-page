@@ -13,12 +13,12 @@ const Footer: React.FC = () => {
                     {/* Brand */}
                     <div>
                         <div className="mb-3 flex items-center gap-2">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c8102e]">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#c8102e]" aria-hidden="true">
                                 <Flame className="h-4 w-4 text-white" />
                             </div>
                             <span className="font-bold text-white">{RESTAURANT_NAME}</span>
                         </div>
-                        <p className="text-sm leading-relaxed text-[#777777]">
+                        <p className="text-sm leading-relaxed text-[#999999]">
                             Tradición parrillera desde 1987. Leña de quebracho, cortes premium y el sabor del campo argentino.
                         </p>
                     </div>
@@ -26,12 +26,12 @@ const Footer: React.FC = () => {
                     {/* Info */}
                     <div className="flex flex-col gap-3">
                         <h4 className="font-semibold text-white">Información</h4>
-                        <div className="flex items-center gap-2 text-sm text-[#777777]">
-                            <MapPin className="h-4 w-4 text-[#c8102e]" />
+                        <div className="flex items-center gap-2 text-sm text-[#999999]">
+                            <MapPin className="h-4 w-4 text-[#c8102e]" aria-hidden="true" />
                             Av. Corrientes 1234, CABA
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-[#777777]">
-                            <Clock className="h-4 w-4 text-[#c8102e]" />
+                        <div className="flex items-center gap-2 text-sm text-[#999999]">
+                            <Clock className="h-4 w-4 text-[#c8102e]" aria-hidden="true" />
                             Lun–Dom: 12:00 – 00:00
                         </div>
                     </div>
@@ -46,13 +46,13 @@ const Footer: React.FC = () => {
                             data-testid="footer-whatsapp-link"
                             className="inline-flex items-center gap-2 rounded-xl bg-[#25D366]/10 px-4 py-2.5 text-sm font-medium text-[#25D366] transition-colors hover:bg-[#25D366]/20"
                         >
-                            <MessageCircle className="h-4 w-4" />
+                            <MessageCircle className="h-4 w-4" aria-hidden="true" />
                             Contactar por WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <div className="mt-10 border-t border-[#2e2e2e] pt-6 text-center text-xs text-[#555555]">
+                <div className="mt-10 border-t border-[#2e2e2e] pt-6 text-center text-xs text-[#888888]">
                     © {new Date().getFullYear()} {RESTAURANT_NAME} · Todos los derechos reservados
                 </div>
             </div>

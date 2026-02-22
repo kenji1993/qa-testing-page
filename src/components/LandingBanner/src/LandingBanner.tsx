@@ -25,7 +25,7 @@ const LandingBanner: React.FC = () => {
                 <div className="max-w-xl">
                     {/* Badge */}
                     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#f5a623]/30 bg-[#f5a623]/10 px-4 py-1.5 text-sm font-medium text-[#f5a623]">
-                        <Flame className="h-4 w-4" />
+                        <Flame className="h-4 w-4" aria-hidden="true" />
                         Parrilla Argentina desde 1987
                     </div>
 
@@ -58,7 +58,7 @@ const LandingBanner: React.FC = () => {
 
                     {/* Social proof */}
                     <div className="mt-8 flex items-center gap-2 text-sm text-[#aaaaaa]">
-                        <div className="flex">
+                        <div className="flex" aria-hidden="true">
                             {[...Array(5)].map((_, i) => (
                                 <Star key={i} className="h-4 w-4 fill-[#f5a623] text-[#f5a623]" />
                             ))}

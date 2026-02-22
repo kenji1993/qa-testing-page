@@ -62,27 +62,33 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         ${product.price.toLocaleString('es-AR')}
                     </span>
 
-                    <button
-                        onClick={handleAdd}
-                        data-testid={`add-to-cart-btn-${product.id}`}
-                        aria-label={`Agregar ${product.name} al carrito`}
-                        className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 ${added
-                            ? 'bg-green-600 text-white'
-                            : 'bg-[#c8102e] text-white hover:bg-[#a50d26]'
-                            }`}
-                    >
-                        {added ? (
-                            <>
-                                <CheckCircle className="h-4 w-4" />
-                                ¡Agregado!
-                            </>
-                        ) : (
-                            <>
-                                <ShoppingCart className="h-4 w-4" />
-                                Agregar
-                            </>
-                        )}
-                    </button>
+                    <div className="flex flex-col items-end gap-1">
+                        {/* aria-live region announces the feedback to screen readers (WCAG 4.1.3) */}
+                        <span aria-live="polite" className="sr-only">
+                            {added ? `${product.name} agregado al carrito` : ''}
+                        </span>
+                        <button
+                            onClick={handleAdd}
+                            data-testid={`add-to-cart-btn-${product.id}`}
+                            aria-label={`Agregar ${product.name} al carrito`}
+                            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 ${added
+                                ? 'bg-green-600 text-white'
+                                : 'bg-[#c8102e] text-white hover:bg-[#a50d26]'
+                                }`}
+                        >
+                            {added ? (
+                                <>
+                                    <CheckCircle className="h-4 w-4" aria-hidden="true" />
+                                    ¡Agregado!
+                                </>
+                            ) : (
+                                <>
+                                    <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+                                    Agregar
+                                </>
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
         </article>

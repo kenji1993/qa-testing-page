@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { X, Trash2, Plus, Minus, MessageCircle, ShoppingBag } from 'lucide-react';
 import { useCartDrawer } from '../../../hooks/useCartDrawer';
+import { useFocusTrap } from '../../../hooks/useFocusTrap';
 import { buildWhatsAppOrder } from '../../../use-cases/buildWhatsAppOrder';
 
 const CartDrawer: React.FC = () => {
+    const drawerRef = useRef<HTMLDivElement>(null);
     const { items, isDrawerOpen, total, closeDrawer, removeItem, updateQuantity, clearCart } = useCartDrawer();
+    useFocusTrap(drawerRef, isDrawerOpen);
 
     const handleWhatsAppOrder = () => {
         if (items.length === 0) return;
@@ -24,7 +27,8 @@ const CartDrawer: React.FC = () => {
             )}
 
             {/* Drawer panel */}
-            <aside
+            <div
+                ref={drawerRef}
                 data-testid="cart-drawer"
                 role="dialog"
                 aria-label="Carrito de compras"
@@ -35,7 +39,7 @@ const CartDrawer: React.FC = () => {
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-[#2e2e2e] px-5 py-4">
                     <div className="flex items-center gap-2">
-                        <ShoppingBag className="h-5 w-5 text-[#c8102e]" />
+                        <ShoppingBag className="h-5 w-5 text-[#c8102e]" aria-hidden="true" />
                         <h2 className="text-lg font-bold text-white">Tu Pedido</h2>
                         {items.length > 0 && (
                             <span className="rounded-full bg-[#c8102e] px-2 py-0.5 text-xs font-bold text-white">
@@ -51,7 +55,7 @@ const CartDrawer: React.FC = () => {
                                 aria-label="Vaciar carrito"
                                 className="flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs text-[#aaaaaa] transition-colors hover:bg-[#2e2e2e] hover:text-red-400"
                             >
-                                <Trash2 className="h-3.5 w-3.5" />
+                                <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
                                 Vaciar
                             </button>
                         )}
@@ -61,7 +65,7 @@ const CartDrawer: React.FC = () => {
                             aria-label="Cerrar carrito"
                             className="flex h-9 w-9 items-center justify-center rounded-full text-[#aaaaaa] transition-colors hover:bg-[#2e2e2e] hover:text-white"
                         >
-                            <X className="h-5 w-5" />
+                            <X className="h-5 w-5" aria-hidden="true" />
                         </button>
                     </div>
                 </div>
@@ -74,7 +78,7 @@ const CartDrawer: React.FC = () => {
                             className="flex h-full flex-col items-center justify-center gap-4 text-center"
                         >
                             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#2e2e2e]">
-                                <ShoppingBag className="h-9 w-9 text-[#555555]" />
+                                <ShoppingBag className="h-9 w-9 text-[#555555]" aria-hidden="true" />
                             </div>
                             <p className="text-lg font-semibold text-white">Tu carrito está vacío</p>
                             <p className="text-sm text-[#aaaaaa]">
@@ -111,7 +115,7 @@ const CartDrawer: React.FC = () => {
                                                 aria-label={`Eliminar ${item.name}`}
                                                 className="flex-shrink-0 text-[#555555] transition-colors hover:text-red-400"
                                             >
-                                                <X className="h-4 w-4" />
+                                                <X className="h-4 w-4" aria-hidden="true" />
                                             </button>
                                         </div>
                                         <div className="flex items-center justify-between">
@@ -123,7 +127,7 @@ const CartDrawer: React.FC = () => {
                                                     aria-label={`Disminuir cantidad de ${item.name}`}
                                                     className="flex h-6 w-6 items-center justify-center rounded-md text-[#aaaaaa] transition-colors hover:bg-[#2e2e2e] hover:text-white active:scale-95"
                                                 >
-                                                    <Minus className="h-3 w-3" />
+                                                    <Minus className="h-3 w-3" aria-hidden="true" />
                                                 </button>
                                                 <span
                                                     data-testid={`item-quantity-${item.id}`}
@@ -137,7 +141,7 @@ const CartDrawer: React.FC = () => {
                                                     aria-label={`Aumentar cantidad de ${item.name}`}
                                                     className="flex h-6 w-6 items-center justify-center rounded-md text-[#aaaaaa] transition-colors hover:bg-[#2e2e2e] hover:text-white active:scale-95"
                                                 >
-                                                    <Plus className="h-3 w-3" />
+                                                    <Plus className="h-3 w-3" aria-hidden="true" />
                                                 </button>
                                             </div>
                                             <span
@@ -185,7 +189,7 @@ const CartDrawer: React.FC = () => {
                             aria-label="Hacer pedido por WhatsApp"
                             className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#25D366] px-6 py-4 text-base font-bold text-white shadow-lg shadow-[#25D366]/20 transition-all duration-200 hover:bg-[#1ebe5d] active:scale-[0.98]"
                         >
-                            <MessageCircle className="h-5 w-5" />
+                            <MessageCircle className="h-5 w-5" aria-hidden="true" />
                             Hacer pedido por WhatsApp
                         </button>
                         <p className="mt-2 text-center text-[11px] text-[#555555]">
@@ -193,7 +197,7 @@ const CartDrawer: React.FC = () => {
                         </p>
                     </div>
                 )}
-            </aside>
+            </div>
         </>
     );
 };
