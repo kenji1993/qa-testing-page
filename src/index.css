@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #c8102e;
+  --color-brand-dark: #1a1a1a;
+  --color-brand-gold: #f5a623;
+  --color-surface: #111111;
+  --color-surface-card: #1e1e1e;
+  --color-surface-border: #2e2e2e;
+  --font-family-display: 'Playfair Display', serif;
+  --font-family-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: #f1f1f1;
+  font-family: var(--font-family-body);
+  margin: 0;
+}
